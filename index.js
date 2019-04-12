@@ -13,7 +13,6 @@ app.get("/", (req, res) => {
       skipEmptyLines: true,
       encoding: "utf-8"
     }).data;
-    res.location("./html/calendar.html");
   });
 });
 const port = process.env.PORT || 3000;
