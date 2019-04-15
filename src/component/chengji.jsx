@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./header";
 import {
   XYPlot,
   XAxis,
@@ -12,9 +13,6 @@ import {
   LineMarkSeries,
   Hint
 } from "react-vis";
-import Legend from "./legend";
-import Button from "./button";
-
 const greenData = [
   { x: "2015年期末考试", y: 60, label: 100 },
   { x: "2016年期末考试", y: 90, label: 90 },
@@ -33,6 +31,8 @@ const labelData = greenData.map((d, idx) => ({
 }));
 
 const subjects = ["Chinese", "math", "English"];
+const width = 500,
+  height = 400;
 export default class Example extends React.Component {
   state = {
     enter: false
@@ -43,9 +43,13 @@ export default class Example extends React.Component {
     const BarSeries = useCanvas ? VerticalBarSeriesCanvas : VerticalBarSeries;
     return (
       <div>
-        <Legend />
-        <Button subjects={subjects} />
-        <XYPlot xType="ordinal" width={500} height={400}>
+        <Header subjects={subjects} width={width} />
+        <XYPlot
+          xType="ordinal"
+          width={width}
+          height={height}
+          onMouseLeave={() => this.setState({ enter: false })}
+        >
           <VerticalGridLines />
           <HorizontalGridLines />
 
@@ -62,9 +66,6 @@ export default class Example extends React.Component {
               this.setState({ enter: true, value: datapoint });
               // does something on mouseover
               // you can access the value of the event
-            }}
-            onSeriesMouseOut={event => {
-              this.setState({ enter: false });
             }}
           />
           {this.state.enter ? (

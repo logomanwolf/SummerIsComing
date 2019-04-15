@@ -40,9 +40,9 @@ const Button = ({ subjects }) => {
   );
 
   return (
-    <Dropdown overlay={menu}>
-      <a className="ant-dropdown-link" href="#">
-        Hover me <Icon type="down" />
+    <Dropdown overlay={menu} size="50">
+      <a className="ant-dropdown-link">
+        科目 <Icon type="down" />
       </a>
     </Dropdown>
   );
