@@ -1,16 +1,17 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import Calendar from "./component/calendar";
-import Chengji from "./component/chengji";
-import EX from "./component/example2";
 import "../node_modules/react-vis/dist/style.css";
-import Legend from "./component/legend";
-import "./css/legend.css";
-import ResponsiveRadar from "./component/radarChart";
+
+import Container from "./component/container";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faStroopwafel } from "@fortawesome/free-solid-svg-icons";
+import Test from "./test";
+
+library.add(faStroopwafel);
 class App extends Component {
   render() {
-    return <ResponsiveRadar />;
+    return <Container />;
   }
 }
 

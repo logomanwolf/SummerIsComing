@@ -76,3 +76,14 @@ text.text-hover {
 #tooltip p #date {
   color: #11ccee;
 }
+.ant-checkbox-wrapper {
+  font-size: 10px;
+}
+
+.ant-divider-horizontal {
+  margin-bottom: 3%;
+}
+
+.ant-table {
+  line-height: 0.8;
+}

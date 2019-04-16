@@ -1,3 +1,7 @@
+span.ant-checkbox span {
+  font-size: 7px !important;
+}
+
 svg.rv-discrete-color-legend-item__color {
   overflow: visible;
 }

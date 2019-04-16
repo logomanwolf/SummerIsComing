@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
 import "../css/style.css";
+import Card1 from "./common/card";
+
 class Calendar extends Component {
   state = {
     student_id: 10004
@@ -246,16 +248,18 @@ class Calendar extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div id="tooltip" className="hidden">
-          <p>
-            <span id="date" />
-          </p>
-          <p>
-            <span id="item" />
-          </p>
+      <Card1>
+        <div className="container">
+          <div id="tooltip" className="hidden">
+            <p>
+              <span id="date" />
+            </p>
+            <p>
+              <span id="item" />
+            </p>
+          </div>
         </div>
-      </div>
+      </Card1>
     );
   }
 }
