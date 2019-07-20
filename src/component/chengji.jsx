@@ -74,42 +74,21 @@ export default class ChengJi extends React.Component {
         name: "信息技术"
       }
     ],
-    subj: "语文",
+    subj: "",
     barData: [],
     labelData: [],
-    averageData: [],
-    curTerm: ""
+    averageData: []
+    // curTerm: ""
   };
-  componentDidMount = () => {
-    fetch("/grade/14454")
-      .then(r => {
-        console.log(r);
-        return r.json();
-      })
-      .then(response => {
-        const chengji = this.ExtractChengji(response);
-        console.log("fetch finished");
-        this.setState({
-          chengji: chengji
-        });
-        this.getData(this.state.subj);
-        //获取data
-      });
-  };
+  // componentDidMount = () => {
+  //   this.getData(this.state.subj);
+  // };
   //先将传来的数据组织成map的形式,key为subject
-  ExtractChengji = chengji => {
-    const subject_nest = d3
-      .nest()
-      .key(d => d.mes_sub_name)
-      .sortValues((a, b) => d3.ascending(a.exam_term, b.exam_term))
-      .map(chengji, d3.map);
-    return subject_nest;
-  };
+
   getData = subj => {
-    const { chengji } = this.state;
+    const { chengji } = this.props;
     const Data = chengji["$" + subj].map(item => {
-      if (item.mes_T_Score === "") return { x: item.exam_numname, y: 0 };
-      return { x: item.exam_numname, y: Math.round(item.mes_T_Score) };
+      return { x: item.exam_numname, y: item.mes_Score };
     });
     const uniqueBarData = d3
       .nest()
@@ -142,22 +121,16 @@ export default class ChengJi extends React.Component {
     // this.setState({ test: test });
   };
 
-  onHandleBarClick = curTerm => {
-    this.setState({ curTerm: curTerm.title });
-    console.log(curTerm.x);
-  };
-
   render() {
     const {
       subjects,
       barData,
       labelData,
       averageData,
-      subj,
-      chengji,
-      curTerm
+      subj
+      // curTerm
     } = this.state;
-    const BarSeries = VerticalBarSeries;
+    const { curTerm, onHandleBarClick } = this.props;
     return (
       <Card1 height={430}>
         <Row>
@@ -177,7 +150,7 @@ export default class ChengJi extends React.Component {
               barData={barData}
               labelData={labelData}
               averageData={averageData}
-              onHandleBarClick={this.onHandleBarClick}
+              onHandleBarClick={onHandleBarClick}
             />
           </Col>
         </Row>
