@@ -6,7 +6,7 @@ const { Header, Content } = Layout;
 const Layout1 = ({ children }) => {
   return (
     <Layout>
-      <Header>Header</Header>
+      <Header>ADD</Header>
       <Content>{children}</Content>
     </Layout>
   );
