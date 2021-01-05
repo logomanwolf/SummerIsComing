@@ -9,7 +9,7 @@
     "@nivo/calendar": "^0.55.0",
     "@nivo/radar": "^0.55.0",
     "antd": "^3.16.3",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-plugin-import": "^1.11.0",
     "customize-cra": "^0.2.12",
     "d3": "^5.9.2",
